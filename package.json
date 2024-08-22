@@ -1,6 +1,6 @@
 {
   "name": "code-diagnose",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "bin": {
     "analyze-project": "./dist/index.js"
@@ -12,7 +12,7 @@
     "docs": "typedoc"
   },
   "publishConfig": {
-    "@surenpoghosian:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [],
   "author": "Suren Poghosyan",
