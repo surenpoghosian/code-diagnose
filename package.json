@@ -1,0 +1,25 @@
+{
+  "name": "code-optimization-utils",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },  
+  "keywords": [],
+  "author": "Suren Poghosyan",
+  "license": "ISC",
+  "description": "TypeScript-based npm package for code analysis",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surenpoghosian/code-optimization-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/surenpoghosian/code-optimization-utils/issues"
+  },
+  "homepage": "https://github.com/surenpoghosian/code-optimization-utils#readme",
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
