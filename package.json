@@ -11,6 +11,9 @@
     "build": "tsc",
     "docs": "typedoc"
   },
+  "publishConfig": {
+    "@surenpoghosian:registry": "https://npm.pkg.github.com"
+  },
   "keywords": [],
   "author": "Suren Poghosyan",
   "license": "ISC",
