@@ -1,15 +1,24 @@
-import CodeAnalyzer from './optimization/CodeAnalyzer';
-import { DuplicatedCodeAnalyzer, LongMethodAnalyzer } from './optimization/AnalysisStrategy';
-import CompositeAnalyzer from './optimization/CompositeAnalyzer';
+#!/usr/bin/env node
 
-// Single Strategy
-const singleAnalyzer = new CodeAnalyzer(new DuplicatedCodeAnalyzer());
-const singleIssues = singleAnalyzer.analyze('some code with duplicates');
-console.log('Single Analyzer Issues:', singleIssues);
+import { Command } from 'commander';
+import { analyze } from './ProjectAnalyzer';
 
-// Composite Strategy
-const compositeAnalyzer = new CompositeAnalyzer();
-compositeAnalyzer.addStrategy(new DuplicatedCodeAnalyzer());
-compositeAnalyzer.addStrategy(new LongMethodAnalyzer());
-const compositeIssues = compositeAnalyzer.analyze('some code with various issues');
-console.log('Composite Analyzer Issues:', compositeIssues);
+const program = new Command();
+
+program
+  .version('1.0.0')
+  .description('A project analyzer CLI tool')
+  .option('-d, --directory <type>', 'Specify the project directory to analyze')
+  .parse(process.argv);
+
+const options = program.opts();
+
+if (options.directory) {
+  const reports = analyze(options.directory);
+  reports.forEach(report => {
+    console.log(report);
+  });
+} else {
+  console.error('Please specify a directory to analyze using the --directory option.');
+  process.exit(1);
+}

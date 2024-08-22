@@ -2,24 +2,41 @@
   "name": "code-diagnose",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "bin": {
+    "analyze-project": "./dist/index.js"
+  },
   "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "jest --detectOpenHandles",
     "build": "tsc",
-    "test": "vitest"
-  },  
+    "docs": "typedoc"
+  },
   "keywords": [],
   "author": "Suren Poghosyan",
   "license": "ISC",
-  "description": "TypeScript-based npm package for code analysis",
+  "description": "A tool to analyze project files for software antipatterns.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/surenpoghosian/code-optimization-utils.git"
+    "url": "git+https://github.com/surenpoghosian/code-diagnose.git"
   },
   "bugs": {
-    "url": "https://github.com/surenpoghosian/code-optimization-utils/issues"
+    "url": "https://github.com/surenpoghosian/code-diagnose/issues"
   },
-  "homepage": "https://github.com/surenpoghosian/code-optimization-utils#readme",
+  "homepage": "https://github.com/surenpoghosian/code-diagnose#readme",
   "devDependencies": {
-    "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "@types/commander": "^2.12.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.0",
+    "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "typedoc": "^0.26.5",
+    "typedoc-plugin-markdown": "^4.2.3",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "figures": "^6.1.0",
+    "kleur": "^4.1.5"
   }
 }
