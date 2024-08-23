@@ -5,12 +5,19 @@ export class MagicNumbersPattern extends BasePattern {
     analyze(content: string): Hint[] {
         const hints: Hint[] = [];
         const magicNumberRegex = /\b\d+\b/g;
-        const allowedNumbers = new Set([0, 1]); // Add more allowed numbers if necessary
+        const namedConstantRegex = /const\s+(\w+)\s*=\s*(\d+)/g; // Match named constants
 
-        let match: RegExpExecArray | null;
-        while ((match = magicNumberRegex.exec(content)) !== null) {
-            const number = parseInt(match[0], 10);
-            if (!allowedNumbers.has(number)) {
+        const namedConstants = new Set<string>();
+        let constantMatch: RegExpExecArray | null;
+
+        while ((constantMatch = namedConstantRegex.exec(content)) !== null) {
+            namedConstants.add(constantMatch[2]); // Add constant values
+        }
+
+        let numberMatch: RegExpExecArray | null;
+        while ((numberMatch = magicNumberRegex.exec(content)) !== null) {
+            const number = numberMatch[0];
+            if (!namedConstants.has(number)) {
                 hints.push(new Hint(`Possible Magic Number detected: "${number}" should be replaced with a named constant.`));
             }
         }

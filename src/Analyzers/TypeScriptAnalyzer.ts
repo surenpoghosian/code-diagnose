@@ -10,6 +10,13 @@ import { GodObjectASTPattern } from '../Patterns/GodObjectASTPattern';
 import { GodObjectPattern } from '../Patterns/GodeObjectPattern';
 import { MagicNumbersPattern } from '../Patterns/MagicNumbersPattern';
 import { ShotgunSurgeryPattern } from '../Patterns/ShotgunSurgeryPattern';
+import { LargeClassPattern } from '../Patterns/LargeClassPattern';
+import { LazyClassPattern } from '../Patterns/LazyClassPattern';
+import { LongParameterListPattern } from '../Patterns/LongParameterListPattern';
+import { MiddleManPattern } from '../Patterns/MiddleManPattern';
+import { PrimitiveObsessionPattern } from '../Patterns/PrimitiveObsessionPattern';
+import { SpeculativeGeneralityPattern } from '../Patterns/SpeculativeGeneralityPattern';
+import { SwitchStatementOverusePattern } from '../Patterns/SwitchStatementOverusePattern';
 
 export class TypeScriptAnalyzer extends BaseAnalyzer {
     private patterns = [
@@ -18,7 +25,14 @@ export class TypeScriptAnalyzer extends BaseAnalyzer {
         new GodObjectASTPattern(),
         new GodObjectPattern(),
         new MagicNumbersPattern(),
-        new ShotgunSurgeryPattern()
+        new ShotgunSurgeryPattern(),
+        new LargeClassPattern(),
+        new LazyClassPattern(),
+        new LongParameterListPattern(),
+        new MiddleManPattern(),
+        new PrimitiveObsessionPattern(),
+        new SpeculativeGeneralityPattern(),
+        new SwitchStatementOverusePattern(),
         // Add other patterns here...
     ];
 
