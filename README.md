@@ -38,6 +38,6 @@ If you find any issues or have suggestions for improvements, please open an issu
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE]() file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/surenpoghosian/code-diagnose/blob/main/LICENSE) file for details.
 
 Feel free to adjust any sections to better fit your project’s specifics or any additional details you’d like to include!
