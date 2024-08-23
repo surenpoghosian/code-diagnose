@@ -19,27 +19,6 @@ describe('TypeScriptAnalyzer', () => {
         jest.clearAllMocks();
     });
 
-    // test('should analyze TypeScript files for code duplication', () => {
-    //     const filePath = 'test-file.ts';
-    //     const fileContent = `
-    //         function foo() {
-    //             console.log('Hello');
-    //         }
-    //         function foo() {
-    //             console.log('Hello');
-    //         }
-    //     `;
-
-    //     // Mocking FileReader.read
-    //     (FileReader.read as jest.Mock).mockReturnValue(fileContent);
-
-    //     const report = analyzer.analyze(filePath);
-
-    //     expect(report).toBeInstanceOf(Report);
-    //     const summary = report.generateSummary();
-    //     expect(summary).toContain('Possible duplicate block detected: "function foo() { console.log(\'Hello\'); }" appears 2 times.');
-    // });
-
     test('should handle empty files', () => {
         const filePath = 'empty-file.ts';
         const fileContent = '';
@@ -57,10 +36,10 @@ describe('TypeScriptAnalyzer', () => {
     test('should handle files with only boilerplate code', () => {
         const filePath = 'boilerplate-file.ts';
         const fileContent = `
-          // Some boilerplate code
-          class MyClass {
+        // Some boilerplate code
+        class MyClass {
             constructor() {}
-          }
+        }
         `;
 
         // Mocking FileReader.read
@@ -70,6 +49,6 @@ describe('TypeScriptAnalyzer', () => {
 
         expect(report).toBeInstanceOf(Report);
         const summary = report.generateSummary();
-        expect(summary).toBe('\n📁 File: boilerplate-file.ts\n💡 Hints:\n');
+        expect(summary).toContain('Possible Lazy Class detected');
     });
 });
