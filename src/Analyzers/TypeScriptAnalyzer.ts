@@ -17,6 +17,7 @@ import { MiddleManPattern } from '../Patterns/MiddleManPattern';
 import { PrimitiveObsessionPattern } from '../Patterns/PrimitiveObsessionPattern';
 import { SpeculativeGeneralityPattern } from '../Patterns/SpeculativeGeneralityPattern';
 import { SwitchStatementOverusePattern } from '../Patterns/SwitchStatementOverusePattern';
+import { DeadCodePattern } from '../Patterns/DeadCodePattern';
 
 export class TypeScriptAnalyzer extends BaseAnalyzer {
     private patterns = [
@@ -33,6 +34,7 @@ export class TypeScriptAnalyzer extends BaseAnalyzer {
         new PrimitiveObsessionPattern(),
         new SpeculativeGeneralityPattern(),
         new SwitchStatementOverusePattern(),
+        new DeadCodePattern(),
         // Add other patterns here...
     ];
 
