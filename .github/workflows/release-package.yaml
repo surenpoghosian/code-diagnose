@@ -22,42 +22,42 @@ jobs:
       - name: Run tests
         run: npm test
 
-publish-npm:
-  needs: build
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Configure npm authentication
-      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Configure npm authentication
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-    - name: Publish to npm
-      run: npm publish --access public
+      - name: Publish to npm
+        run: npm publish --access public
 
-publish-gpr:
-  needs: build
-  runs-on: ubuntu-latest
-  permissions:
-    packages: write
-    contents: read
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        registry-url: https://npm.pkg.github.com/
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
 
-    - name: Configure npm to use GitHub Packages registry
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GIT_TOKEN }}" > ~/.npmrc
+      - name: Configure npm to use GitHub Packages registry
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GIT_TOKEN }}" > ~/.npmrc
 
-    - name: Publish to GitHub Packages
-      run: npm publish
+      - name: Publish to GitHub Packages
+        run: npm publish
