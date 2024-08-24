@@ -18,6 +18,7 @@ const MiddleManPattern_1 = require("../Patterns/MiddleManPattern");
 const PrimitiveObsessionPattern_1 = require("../Patterns/PrimitiveObsessionPattern");
 const SpeculativeGeneralityPattern_1 = require("../Patterns/SpeculativeGeneralityPattern");
 const SwitchStatementOverusePattern_1 = require("../Patterns/SwitchStatementOverusePattern");
+const DeadCodePattern_1 = require("../Patterns/DeadCodePattern");
 class TypeScriptAnalyzer extends BaseAnalyzer_1.BaseAnalyzer {
     constructor() {
         super(...arguments);
@@ -35,6 +36,7 @@ class TypeScriptAnalyzer extends BaseAnalyzer_1.BaseAnalyzer {
             new PrimitiveObsessionPattern_1.PrimitiveObsessionPattern(),
             new SpeculativeGeneralityPattern_1.SpeculativeGeneralityPattern(),
             new SwitchStatementOverusePattern_1.SwitchStatementOverusePattern(),
+            new DeadCodePattern_1.DeadCodePattern(),
             // Add other patterns here...
         ];
     }
