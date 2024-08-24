@@ -14,6 +14,26 @@ To analyze your TypeScript project, use the following command:
 
 Replace /path/to/your/project with the path to the directory of your TypeScript project.
 
+### Patterns Detected
+
+**Code Diagnose** can detect the following software antipatterns:
+
+- **Code Duplication Pattern**: Identifies repeated code across files.
+- **Code Smell Pattern**: Flags general code smells and poor practices.
+- **God Object (AST) Pattern**: Detects classes or objects with excessive responsibilities.
+- **God Object Pattern**: Similar to AST but without AST-specific context.
+- **Magic Numbers Pattern**: Finds hardcoded numeric values that should be constants.
+- **Shotgun Surgery Pattern**: Detects cases where a single change requires altering many different parts of the codebase.
+- **Large Class Pattern**: Identifies classes that are too large and should be refactored.
+- **Lazy Class Pattern**: Flags classes that are not sufficiently utilized and could be removed or merged.
+- **Long Parameter List Pattern**: Detects methods or functions with too many parameters.
+- **Middle Man Pattern**: Finds classes that only pass requests to other classes.
+- **Primitive Obsession Pattern**: Identifies overuse of primitive types instead of using more appropriate types or classes.
+- **Speculative Generality Pattern**: Flags code that is overly generalized or anticipates future requirements that might never be needed.
+- **Switch Statement Overuse Pattern**: Detects excessive use of switch statements that could be replaced with polymorphism.
+- **Dead Code Pattern**: Finds variables or code that is declared but never used.
+
+
 ### Configuration
 
 **.diagnoseignore**
