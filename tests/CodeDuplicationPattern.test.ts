@@ -97,4 +97,40 @@ describe('CodeDuplicationPattern', () => {
         expect(hints.some(hint => hint.message.includes('console.log(\'Hello\')'))).toBe(true);
         expect(hints.some(hint => hint.message.includes('method() {'))).toBe(true);
     });
+
+    test('should ignore lines that match common patterns', () => {
+        const content = `
+            function foo() {
+                console.log('Hello');
+            }
+            
+            function bar() {
+                console.log('Hello');
+            }
+            
+            }
+            
+            {
+            
+            });
+            
+            });
+        `;
+        const hints = pattern.analyze(content);
+        
+        // Check that the common patterns are ignored and do not trigger duplicate detection
+        expect(hints.length).toBeGreaterThan(0); // Expecting hints for "console.log('Hello')"
+        expect(hints.some(hint => hint.message.includes('console.log(\'Hello\')'))).toBe(true);
+        
+        // Ensure that none of the hints relate to the common patterns
+        const commonPatternMessages = [
+            'Possible duplicate code detected: "}"',
+            'Possible duplicate code detected: "{"',
+            'Possible duplicate code detected: ");"',
+            'Possible duplicate code detected: "});"',
+        ];
+        commonPatternMessages.forEach(message => {
+            expect(hints.some(hint => hint.message === message)).toBe(false);
+        });
+    });
 });

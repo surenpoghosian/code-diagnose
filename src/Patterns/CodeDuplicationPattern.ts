@@ -5,8 +5,17 @@ export class CodeDuplicationPattern extends BasePattern {
     analyze(content: string): Hint[] {
         const hints: Hint[] = [];
         
-        // Split the content into lines and group them by their occurrence
-        const lines = content.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        const commonPatterns = [
+            /^\}$/,         // single closing curly brace
+            /^\{$/,         // single opening curly brace
+            /^\);$/,        // closing parenthesis followed by a semicolon
+            /^\}\);$/,      // closing curly brace followed by closing parenthesis and semicolon
+        ];
+
+        const lines = content.split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0 && !this.isCommonLine(line, commonPatterns));
+        
         const lineCounts = new Map<string, number>();
         
         lines.forEach(line => {
@@ -37,6 +46,10 @@ export class CodeDuplicationPattern extends BasePattern {
         });
 
         return hints;
+    }
+
+    private isCommonLine(line: string, patterns: RegExp[]): boolean {
+        return patterns.some(pattern => pattern.test(line));
     }
 
     private extractCodeBlocks(content: string): string[] {
