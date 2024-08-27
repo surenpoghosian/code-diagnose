@@ -6,6 +6,10 @@
 
 As your project grows, your code can become hard to manage. Repeated code blocks, large classes, and bad design choices can slow down development and make it harder to add new features. **Code Diagnose** helps you find these problems automatically so you can focus on writing new code instead of fixing old issues.
 
+## Not AI-Based
+
+**Code Diagnose** uses well-defined patterns and rules to analyze your TypeScript code. It does not use AI or machine learning algorithms. Instead, it relies on proven software engineering principles to detect code issues, ensuring consistent and predictable results.
+
 ### Key Benefits:
 - **Improves Code Quality**: Detects common issues to help you write cleaner, easier-to-maintain code.
 - **Saves Time**: Finds problems quickly that would take a lot of time to find manually.
