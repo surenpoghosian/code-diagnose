@@ -1,63 +1,99 @@
 # Code Diagnose
 
-**Code Diagnose** is a CLI tool for detecting software antipatterns in your TypeScript projects. It helps identify code smells and improve code quality by analyzing your codebase for common design issues.
+**Code Diagnose** is a powerful command-line tool designed for developers who work with TypeScript. It helps you keep your code clean and efficient by finding common issues that can make your code messy over time. With **Code Diagnose**, you can easily find and fix problems like repeated code, large classes, and unnecessary code, making your project easier to maintain and scale.
 
-### Installation
-To install Code Diagnose, run:
+## Why Use Code Diagnose?
 
-`npm install -g code-diagnose`
+As your project grows, your code can become hard to manage. Repeated code blocks, large classes, and bad design choices can slow down development and make it harder to add new features. **Code Diagnose** helps you find these problems automatically so you can focus on writing new code instead of fixing old issues.
 
-### Usage
-To analyze your TypeScript project, use the following command:
+## Not AI-Based
 
-`analyze-project --directory /path/to/your/project`
+**Code Diagnose** uses well-defined patterns and rules to analyze your TypeScript code. It does not use AI or machine learning algorithms. Instead, it relies on proven software engineering principles to detect code issues, ensuring consistent and predictable results.
 
-Replace /path/to/your/project with the path to the directory of your TypeScript project.
+### Key Benefits:
+- **Improves Code Quality**: Detects common issues to help you write cleaner, easier-to-maintain code.
+- **Saves Time**: Finds problems quickly that would take a lot of time to find manually.
+- **Easy to Use**: Works smoothly with your TypeScript projects.
 
-### Patterns Detected
+## Installation
 
-**Code Diagnose** can detect the following software antipatterns:
+Installing **Code Diagnose** is simple. Use npm to install it globally on your system:
 
-- **Code Duplication Pattern**: Identifies repeated code across files.
-- **Code Smell Pattern**: Flags general code smells and poor practices.
-- **God Object (AST) Pattern**: Detects classes or objects with excessive responsibilities.
-- **God Object Pattern**: Similar to AST but without AST-specific context.
-- **Magic Numbers Pattern**: Finds hardcoded numeric values that should be constants.
-- **Shotgun Surgery Pattern**: Detects cases where a single change requires altering many different parts of the codebase.
-- **Large Class Pattern**: Identifies classes that are too large and should be refactored.
-- **Lazy Class Pattern**: Flags classes that are not sufficiently utilized and could be removed or merged.
-- **Long Parameter List Pattern**: Detects methods or functions with too many parameters.
-- **Middle Man Pattern**: Finds classes that only pass requests to other classes.
-- **Primitive Obsession Pattern**: Identifies overuse of primitive types instead of using more appropriate types or classes.
-- **Speculative Generality Pattern**: Flags code that is overly generalized or anticipates future requirements that might never be needed.
-- **Switch Statement Overuse Pattern**: Detects excessive use of switch statements that could be replaced with polymorphism.
-- **Dead Code Pattern**: Finds variables or code that is declared but never used.
+```bash
+npm install -g code-diagnose
+```
 
+This makes **Code Diagnose** available for use in any of your projects.
 
-### Configuration
+## How to Use Code Diagnose
 
-**.diagnoseignore**
+After installation, analyzing your project is easy. Go to your project’s directory and run:
 
-You can exclude specific files or directories from being analyzed by creating a .diagnoseignore file in the root of your project. This file should list the files and directories to ignore, one per line. For example:
+```bash
+analyze-project --directory /path/to/your/project
+```
+
+Replace `/path/to/your/project` with the actual path to your project. **Code Diagnose** will scan your files and create a report showing areas that need attention.
+
+### Example Usage:
+
+```bash
+analyze-project --directory ./my-typescript-project
+```
+
+After running this command, you’ll get a detailed report of any detected issues, along with suggestions on how to fix them.
+
+## Patterns Detected by Code Diagnose
+
+**Code Diagnose** can detect a wide range of common issues in TypeScript projects. Here are the patterns it currently supports:
+
+- **Code Duplication**: Finds repeated code blocks in different files or within the same file. Reducing duplication makes your code easier to maintain.
+- **Code Smells**: Detects general bad practices that could lead to bugs or make your code harder to understand.
+- **God Object (AST)**: Identifies classes or objects that try to do too much. These should be broken down into smaller, more focused pieces.
+- **God Object (Non-AST)**: Similar to the AST version but focuses on non-abstract syntax tree contexts for broader coverage.
+- **Magic Numbers**: Finds hardcoded numbers that should be replaced with named constants to improve readability.
+- **Shotgun Surgery**: Detects when one change requires you to update many parts of your codebase, a sign that your code might need refactoring.
+- **Large Class**: Finds classes that have become too large and should be split into smaller, more manageable pieces.
+- **Lazy Class**: Flags classes that don’t do enough to justify their existence, suggesting they could be merged with others or removed.
+- **Long Parameter List**: Detects functions or methods with too many parameters, making them hard to use and understand.
+- **Middle Man**: Identifies classes that only pass requests to other classes without adding value. These can often be removed to simplify your codebase.
+- **Primitive Obsession**: Finds overuse of primitive types (like strings and numbers) where more specific types or classes would make the code clearer.
+- **Speculative Generality**: Flags code that’s been over-engineered to handle unlikely cases, adding unnecessary complexity.
+- **Switch Statement Overuse**: Detects overuse of switch statements, which can often be replaced with polymorphism for cleaner code.
+- **Dead Code**: Finds variables, functions, or entire blocks of code that are declared but never used, which can be safely removed.
+
+By detecting these patterns, **Code Diagnose** helps you refactor and improve your code, making your project cleaner and more efficient.
+
+## Configuration Options
+
+You can customize **Code Diagnose** to meet your needs. Create a `.diagnoseignore` file in your project’s root directory to exclude specific files or directories from analysis.
+
+### Example .diagnoseignore File:
 
 ```
 # Ignore all files in the node_modules directory
 node_modules/
 
-# Ignore specific files
-src/ignore-this-file.ts
+# Ignore a specific file
+src/legacy-code.ts
 ```
 
-### Beta Version
+Ignoring files or directories that aren’t relevant lets you focus on the most important parts of your codebase.
 
-Please note that Code Diagnose is currently in beta and still under development. Features and functionality may change as development progresses. Feedback and contributions are welcome!
+## Beta Version Disclaimer
 
-### Contributing
+**Code Diagnose** is currently in beta, which means it’s still being improved. As a beta user, your feedback is very valuable. If you find any issues or have suggestions for new features, please share them on our GitHub page.
 
-If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on [GitHub](https://github.com/surenpoghosian/code-diagnose)
+## Contributing to Code Diagnose
 
-### License
+We welcome contributions! If you’d like to help improve **Code Diagnose** by reporting bugs, suggesting features, or submitting code, visit our [GitHub repository](https://github.com/surenpoghosian/code-diagnose).
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/surenpoghosian/code-diagnose/blob/main/LICENSE) file for details.
+Your input helps us make **Code Diagnose** better, and we appreciate any contributions you can make.
 
-Feel free to adjust any sections to better fit your project’s specifics or any additional details you’d like to include!
+## License
+
+**Code Diagnose** is open-source software, licensed under the MIT License. You’re free to use, modify, and distribute it as you see fit. For more details, check out the [LICENSE](https://github.com/surenpoghosian/code-diagnose/blob/main/LICENSE) file in the GitHub repository.
+
+---
+
+Whether you're an experienced developer or just starting out, **Code Diagnose** is a great tool for keeping your TypeScript code in top shape. Try it out today and see how it can help you write better, cleaner code.

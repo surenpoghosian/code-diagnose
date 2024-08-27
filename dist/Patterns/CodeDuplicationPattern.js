@@ -6,8 +6,15 @@ const Hint_1 = require("../Reports/Hint");
 class CodeDuplicationPattern extends BasePattern_1.BasePattern {
     analyze(content) {
         const hints = [];
-        // Split the content into lines and group them by their occurrence
-        const lines = content.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+        const commonPatterns = [
+            /^\}$/, // single closing curly brace
+            /^\{$/, // single opening curly brace
+            /^\);$/, // closing parenthesis followed by a semicolon
+            /^\}\);$/, // closing curly brace followed by closing parenthesis and semicolon
+        ];
+        const lines = content.split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0 && !this.isCommonLine(line, commonPatterns));
         const lineCounts = new Map();
         lines.forEach(line => {
             lineCounts.set(line, (lineCounts.get(line) || 0) + 1);
@@ -32,6 +39,9 @@ class CodeDuplicationPattern extends BasePattern_1.BasePattern {
             }
         });
         return hints;
+    }
+    isCommonLine(line, patterns) {
+        return patterns.some(pattern => pattern.test(line));
     }
     extractCodeBlocks(content) {
         // Basic implementation to extract code blocks (e.g., functions)
